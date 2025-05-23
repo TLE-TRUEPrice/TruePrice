@@ -1,22 +1,17 @@
 # Errors
 
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-The Kittn API uses the following error codes:
-
+The TruePrice™ API uses the following error codes:
 
 Error Code | Meaning
 ---------- | -------
-400 | Bad Request -- Your request is invalid.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+400 | Bad Request — Your request is invalid or missing required parameters.
+401 | Unauthorized — Your API credentials (email/password or token) are incorrect or missing.
+403 | Forbidden — You do not have permission to access this resource.
+404 | Not Found — The requested data or endpoint could not be found.
+405 | Method Not Allowed — You used an unsupported HTTP method (e.g., POST instead of GET).
+406 | Not Acceptable — You requested a format that is not supported (e.g., XML instead of JSON/CSV/XLSX).
+410 | Gone — The requested resource is no longer available.
+418 | I'm a teapot — Fun Easter egg! This isn’t a real error, but it means something went playfully wrong.
+429 | Too Many Requests — You’ve hit the rate limit. Please wait and try again.
+500 | Internal Server Error — Something went wrong on our end. Please try again later.
+503 | Service Unavailable — The server is temporarily down for maintenance. Please try again soon.
