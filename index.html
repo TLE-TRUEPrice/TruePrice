@@ -1,0 +1,639 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the TruePrice API"
+        >
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-9c19b03a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-024da600.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;python&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-8ee49079.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="python">python</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#prerequisites" class="toc-h2 toc-link" data-title="Prerequisites:">Prerequisites:</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#functions" class="toc-h1 toc-link" data-title="Functions">Functions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#download-data" class="toc-h2 toc-link" data-title="Download Data">Download Data</a>
+                  </li>
+                  <li>
+                    <a href="#working-with-multiple-data-types-amp-handling-specific-scenarios" class="toc-h2 toc-link" data-title="Working with Multiple Data Types &amp; Handling Specific Scenarios">Working with Multiple Data Types &amp; Handling Specific Scenarios</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#example-notebook" class="toc-h1 toc-link" data-title="Example Notebook">Example Notebook</a>
+          </li>
+          <li>
+            <a href="#pricing-desk" class="toc-h1 toc-link" data-title="Pricing Desk">Pricing Desk</a>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the TRUEPrice™ API! This document describes how to interact with TRUEPrice™ API services to retrieve TLE product.</p>
+
+<p>Contact <strong><code>techsupport@truelightenergy.com</code></strong> for more information.</p>
+
+<ul>
+<li>Visit <a href="https://www.truelightenergy.com/contact">Our Website!</a></li>
+</ul>
+<h3 id='prerequisites'>Prerequisites:</h3>
+<ul>
+<li>Ensure you have <strong>Python 3</strong> installed.</li>
+<li>Install the requests library if it’s not already installed:
+<strong><code>pip install requests</code></strong><br></li>
+<li>You will need API credentials (email and password) to authenticate and obtain an access token for secure requests. </li>
+</ul>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">email</span> <span class="o">=</span> <span class="s">"email@forTRUEPrice™.com"</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"password"</span><span class="p">):</span>
+             <span class="n">url</span> <span class="o">=</span> <span class="s">"https://truepriceenergy.com/login"</span>
+             <span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span><span class="s">"email"</span><span class="p">:</span><span class="n">email</span><span class="p">,</span><span class="s">"password"</span><span class="p">:</span><span class="n">password</span><span class="p">}</span>
+             <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">querystring</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+             <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="n">text</span>
+
+<span class="c1">#Example Usage
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">login</span><span class="p">(</span><span class="s">"your_email@example.com"</span><span class="p">,</span> <span class="s">"your_password"</span><span class="p">)</span>
+
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>email &amp; password</code> with your own credentials.</p>
+</blockquote>
+
+<ul>
+<li>Ensure you have imported the necessary Python modules at the start of your script:
+                  <code>import requests</code></li>
+<li>The login function authenticates the user using their email and password, returning a login response that includes an access token. This token is necessary for subsequent API calls.</li>
+<li>Default Credentials: You may pass the default credentials &quot;dummy@truelightenergy.com&quot; or your own credentials.</li>
+</ul>
+
+<p><code>Output: The function returns the access token (or error response)</code></p>
+
+<aside class="notice">
+You must replace <code>email & password </code> with your own credentials.
+</aside>
+<h1 id='functions'>Functions</h1><h2 id='download-data'>Download Data</h2>
+<p><code>The Access Token recieved after login is used in this function to download data.</code></p>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">operating_day</span><span class="p">,</span><span class="n">curve</span><span class="p">,</span> <span class="n">iso</span><span class="p">,</span> <span class="n">strip</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s">"https://truepriceenergy.com/get_data"</span>
+    <span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">"start"</span><span class="p">:</span> <span class="n">start_date</span><span class="p">,</span>
+        <span class="s">"end"</span><span class="p">:</span> <span class="n">end_date</span><span class="p">,</span>
+        <span class="s">"operating_day"</span><span class="p">:</span> <span class="n">operating_day</span><span class="p">,</span>
+        <span class="s">"curve_type"</span><span class="p">:</span> <span class="n">curve</span><span class="p">,</span>
+        <span class="s">"iso"</span><span class="p">:</span> <span class="n">iso</span><span class="p">,</span>
+        <span class="s">"strip"</span><span class="p">:</span> <span class="n">strip</span><span class="p">,</span>
+        <span class="s">"history"</span><span class="p">:</span> <span class="n">history</span><span class="p">,</span>
+        <span class="s">"type"</span><span class="p">:</span> <span class="nb">type</span>
+    <span class="p">}</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s">"Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s">"</span><span class="p">}</span>
+
+    <span class="c1"># Make the API request
+</span>    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">querystring</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="c1"># Save the response content as a CSV file
+</span>    <span class="n">file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">curve</span><span class="si">}</span><span class="s">_</span><span class="si">{</span><span class="n">iso</span><span class="si">}</span><span class="s">.csv"</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+        <span class="nb">file</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Data saved to </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="c1"># Example:
+</span><span class="n">access_token</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">login</span><span class="p">(</span><span class="s">"your_email@example.com"</span><span class="p">,</span> <span class="s">"your_password"</span><span class="p">))[</span><span class="s">"access_token"</span><span class="p">]</span>
+
+<span class="c1">#Response
+</span><span class="n">data_response</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">your_access_token</span><span class="p">,</span> <span class="n">your_start_date</span><span class="p">,</span> <span class="n">your_end_date</span><span class="p">,</span> <span class="n">your_operating_day</span><span class="p">,</span> <span class="n">your_curve</span><span class="p">,</span> <span class="n">your_iso</span><span class="p">,</span> <span class="n">your_strip</span><span class="p">,</span> <span class="n">your_idcob</span><span class="p">,</span> <span class="n">your_type</span><span class="p">)</span>
+
+</code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://truepriceenergy.com/get_data</code></p>
+<h5 id='request-parameters'><strong>Request Parameters</strong></h5>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>access_token</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>The access token for authentication.</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>The start date for the data retrieval in <code>YYYY-MM-DD</code> format.</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>The end date for the data retrieval in <code>YYYY-MM-DD</code> format.</td>
+</tr>
+<tr>
+<td><code>operating_day</code></td>
+<td>string</td>
+<td>No</td>
+<td>The operating day for the data retrieval in <code>YYYY-MM-DD</code> format.</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td>string</td>
+<td>No</td>
+<td>Offset value for pagination or filtering.</td>
+</tr>
+<tr>
+<td><code>curve</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>The type of curve (e.g., <code>energy</code>, <code>nonenergy</code>, <code>rec</code>).</td>
+</tr>
+<tr>
+<td><code>iso</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>The ISO region (e.g., <code>isone</code>, <code>pjm</code>, <code>ercot</code>, <code>nyiso</code>, <code>miso</code>).</td>
+</tr>
+<tr>
+<td><code>strip</code></td>
+<td>string</td>
+<td>No</td>
+<td>The strip type (e.g., <code>standardized</code>, <code>unstandardized</code>).</td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>boolean</td>
+<td>No</td>
+<td>Whether to include historical data (<code>True</code> or <code>False</code>).</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>The response format (e.g., <code>csv</code>,<code>xlsx</code>).</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Authorization</code></td>
+<td><code>Bearer &lt;access_token&gt;</code></td>
+</tr>
+</tbody></table>
+<h2 id='working-with-multiple-data-types-amp-handling-specific-scenarios'>Working with Multiple Data Types &amp; Handling Specific Scenarios</h2><div class="highlight"><pre class="highlight python tab-python"><code>
+<span class="sb">`ERCOT`</span>
+<span class="c1">#Formatted Standardized Data
+</span><span class="n">energy_ercocot_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"ercot"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+<span class="c1"># Unformated Unstandardized Data
+</span><span class="n">energy_ercocot_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"ercot"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="s">"intradayonly"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+<span class="sb">`ISO-NE`</span>
+<span class="c1">#Formatted Standardized Data
+</span><span class="n">energy_isone_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"isone"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+<span class="c1"># Unformated Unstandardized Data
+</span><span class="n">energy_isone_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"isone"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="s">"intradayonly"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+<span class="sb">`NYISO`</span>
+<span class="c1">#Formatted Standardized Data
+</span><span class="n">energy_nyiso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"nyiso"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+<span class="c1"># Unformated Unstandardized Data
+</span><span class="n">energy_nyiso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"nyiso"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="s">"intradayonly"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+<span class="sb">`MISO`</span>
+<span class="c1">#Formatted Standardized Data
+</span><span class="n">energy_miso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"miso"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+<span class="c1"># Unformated Unstandardized Data
+</span><span class="n">energy_miso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"miso"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="s">"intradayonly"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+<span class="sb">`PJM`</span>
+<span class="c1">#Formatted Standardized Data
+</span><span class="n">energy_pjm_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"pjm"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+<span class="c1"># Unformated Unstandardized Data
+</span><span class="n">energy_pjm_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"pjm"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+
+</code></pre></div>
+<p>This endpoint retrieves curves based on Data Types, ISO&#39;s.</p>
+
+<p>Each data type can be formatted or unformatted, standardized or unstandardized and saved directly to a desired file format( csv,xlsx,json)</p>
+
+<p><img src="images/dataupload-c122e9d2.png" alt="Data Upload Schedule" /></p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://truepriceenergy.com/get_data</code></p>
+<h1 id='example-notebook'>Example Notebook</h1>
+<p>To understand how to use the API in detail, check out this Jupyter notebook:</p>
+
+<p><a href="https://github.com/TLE-TRUEPrice/TruePrice/blob/main/notebooks/APIGuide.ipynb" target="_blank" style="display:block; margin: 10px 0 0; font-weight:bold;">
+  ↗ API User Guide – Notebook
+</a></p>
+<h1 id='pricing-desk'>Pricing Desk</h1>
+<p>For detailed guidance on using the Pricing Desk interface and understanding available features, refer to the user manual below:</p>
+
+<p><a href="https://tle-trueprice.github.io/PricingDeskUserGuides/" target="_blank" style="display:block; margin: 10px 0 20px; font-weight:bold;">
+  ↗ Pricing Desk User Guide
+</a></p>
+<h1 id='errors'>Errors</h1>
+<p>The TruePrice™ API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request — Your request is invalid or missing required parameters.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized — Your API credentials (email/password or token) are incorrect or missing.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden — You do not have permission to access this resource.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found — The requested data or endpoint could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed — You used an unsupported HTTP method (e.g., POST instead of GET).</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable — You requested a format that is not supported (e.g., XML instead of JSON/CSV/XLSX).</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone — The requested resource is no longer available.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot — Fun Easter egg! This isn’t a real error, but it means something went playfully wrong.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests — You’ve hit the rate limit. Please wait and try again.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error — Something went wrong on our end. Please try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable — The server is temporarily down for maintenance. Please try again soon.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="python">python</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
