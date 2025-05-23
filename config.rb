@@ -63,7 +63,9 @@ helpers do
 end
 
 activate :deploy do |deploy|
-  deploy.method = :git
-  deploy.remote = 'https://github.com/TLE-TRUEPrice/TruePrice.git'
-  deploy.branch = 'gh-pages'
+  deploy.deploy_method = :git
+  deploy.remote        = 'https://github.com/TLE-TRUEPrice/TruePrice.git'
+  deploy.branch        = 'gh-pages'
+  deploy.build_before  = true
 end
+

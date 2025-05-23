@@ -18,6 +18,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.2.0)
     contracts (0.16.1)
+    date (3.4.1)
     dotenv (2.8.1)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -74,6 +75,10 @@ GEM
       toml
       uglifier (~> 3.0)
       webrick
+    middleman-deploy (2.0.0.pre.alpha)
+      middleman-core (>= 3.2)
+      net-sftp
+      ptools
     middleman-sprockets (4.1.1)
       middleman-core (~> 4.0)
       sprockets (>= 3.0)
@@ -82,6 +87,14 @@ GEM
       rouge (~> 3.2)
     mini_portile2 (2.8.0)
     minitest (5.17.0)
+    net-ftp (0.3.8)
+      net-protocol
+      time
+    net-protocol (0.2.2)
+      timeout
+    net-sftp (4.0.0)
+      net-ssh (>= 5.0.0, < 8.0.0)
+    net-ssh (7.3.0)
     nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -92,6 +105,7 @@ GEM
     padrino-support (0.15.2)
     parallel (1.22.1)
     parslet (2.0.0)
+    ptools (1.5.0)
     public_suffix (5.0.1)
     racc (1.6.0)
     rack (2.2.6.2)
@@ -115,6 +129,9 @@ GEM
     temple (0.10.0)
     thor (1.2.1)
     tilt (2.0.11)
+    time (0.4.1)
+      date
+    timeout (0.4.3)
     toml (0.3.0)
       parslet (>= 1.8.0, < 3.0.0)
     tzinfo (2.0.6)
@@ -130,8 +147,10 @@ PLATFORMS
 DEPENDENCIES
   middleman (~> 4.4)
   middleman-autoprefixer (~> 3.0)
+  middleman-deploy (~> 2.0.0.pre.alpha)
   middleman-sprockets (~> 4.1)
   middleman-syntax (~> 3.2)
+  net-ftp
   nokogiri (~> 1.13.3)
   redcarpet (~> 3.6.0)
   rouge (~> 3.21)
