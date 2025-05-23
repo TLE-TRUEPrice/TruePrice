@@ -61,3 +61,9 @@ set :port, 4567
 helpers do
   require './lib/toc_data.rb'
 end
+
+activate :deploy do |deploy|
+  deploy.method = :git
+  deploy.remote = 'https://github.com/TLE-TRUEPrice/TruePrice.git'
+  deploy.branch = 'gh-pages'
+end
