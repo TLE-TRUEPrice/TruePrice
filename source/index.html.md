@@ -201,10 +201,9 @@ Each data type can be formatted or unformatted, standardized or unstandardized a
 
 To understand how to use the API in detail, check out this Jupyter notebook:
 
-<a href="https://github.com/TLE-TRUEPrice/TruePrice/blob/main/notebooks/APIGuide.ipynb" target="_blank" style="display:block; margin: 10px 0 0; font-weight:bold;">
-  ↗ API User Guide – Notebook
+<a href="https://colab.research.google.com/github/TLE-TRUEPrice/TruePrice/blob/main/notebooks/APIGuide.ipynb" target="_blank" style="display:block; margin: 10px 0 0; font-weight:bold;">
+  ↗ Open in Google Colab – API User Guide Notebook
 </a>
-
 
 # Pricing Desk
 
