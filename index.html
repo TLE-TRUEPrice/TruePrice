@@ -295,7 +295,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -305,7 +305,10 @@
     <div class="toc-wrapper">
       <img src="images/logo-8ee49079.png" class="logo" alt="" />
         <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -371,16 +374,43 @@
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">email</span> <span class="o">=</span> <span class="s">"email@forTRUEPrice™.com"</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"password"</span><span class="p">):</span>
-             <span class="n">url</span> <span class="o">=</span> <span class="s">"https://truepriceenergy.com/login"</span>
-             <span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span><span class="s">"email"</span><span class="p">:</span><span class="n">email</span><span class="p">,</span><span class="s">"password"</span><span class="p">:</span><span class="n">password</span><span class="p">}</span>
-             <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">querystring</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-             <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="n">text</span>
+<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'uri'</span>
+
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://truepriceenergy.com/login"</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">email: </span><span class="s1">'your_email@example.com'</span><span class="p">,</span> <span class="ss">password: </span><span class="s1">'your_password'</span> <span class="p">}</span>
+<span class="n">uri</span><span class="p">.</span><span class="nf">query</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">encode_www_form</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>  <span class="c1"># Equivalent to verify=False</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">request_uri</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">email</span> <span class="o">=</span> <span class="s">"email@truelightenergy.com"</span><span class="p">,</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"password"</span><span class="p">):</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s">"https://truepriceenergy.com/login"</span>
+  <span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span><span class="s">"email"</span><span class="p">:</span><span class="n">email</span><span class="p">,</span><span class="s">"password"</span><span class="p">:</span><span class="n">password</span><span class="p">}</span>
+  <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">querystring</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="n">text</span>
 
 <span class="c1">#Example Usage
 </span><span class="n">response</span> <span class="o">=</span> <span class="n">login</span><span class="p">(</span><span class="s">"your_email@example.com"</span><span class="p">,</span> <span class="s">"your_password"</span><span class="p">)</span>
 
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-k</span> <span class="nt">-G</span> <span class="s2">"https://truepriceenergy.com/login"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"email=your_email@example.com"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"password=your_password"</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://truepriceenergy.com/login</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">your_email@example.com</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">password</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">your_password</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
 </code></pre></div>
 <blockquote>
 <p>Make sure to replace <code>email &amp; password</code> with your own credentials.</p>
@@ -400,10 +430,39 @@ You must replace <code>email & password </code> with your own credentials.
 </aside>
 <h1 id='functions'>Functions</h1><h2 id='download-data'>Download Data</h2>
 <p><code>The Access Token recieved after login is used in this function to download data.</code></p>
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">operating_day</span><span class="p">,</span><span class="n">curve</span><span class="p">,</span> <span class="n">iso</span><span class="p">,</span> <span class="n">strip</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'openssl'</span>
 
-    <span class="n">url</span> <span class="o">=</span> <span class="s">"https://truepriceenergy.com/get_data"</span>
-    <span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://truepriceenergy.com/get_data"</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">start: </span><span class="s2">"YYYY-MM-DD"</span><span class="p">,</span>
+  <span class="ss">end: </span><span class="s2">"YYYY-MM-DD"</span><span class="p">,</span>
+  <span class="ss">operating_day: </span><span class="s2">"YYYY-MM-DD"</span><span class="p">,</span>
+  <span class="ss">curve_type: </span><span class="s2">"CurveName"</span><span class="p">,</span>
+  <span class="ss">iso: </span><span class="s2">"ISOName"</span><span class="p">,</span>
+  <span class="ss">strip: </span><span class="s2">"StripType"</span><span class="p">,</span>
+  <span class="ss">history: </span><span class="s2">"IDC_OB_Value"</span><span class="p">,</span>
+  <span class="ss">type: </span><span class="s2">"TypeName"</span>
+<span class="p">}</span>
+<span class="n">uri</span><span class="p">.</span><span class="nf">query</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">encode_www_form</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Bearer YOUR_ACCESS_TOKEN"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+<span class="n">file_name</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:curve_type</span><span class="p">]</span><span class="si">}</span><span class="s2">_</span><span class="si">#{</span><span class="n">params</span><span class="p">[</span><span class="ss">:iso</span><span class="p">]</span><span class="si">}</span><span class="s2">.csv"</span>
+<span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="n">file</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="nb">puts</span> <span class="s2">"Data saved to </span><span class="si">#{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">operating_day</span><span class="p">,</span><span class="n">curve</span><span class="p">,</span> <span class="n">iso</span><span class="p">,</span> <span class="n">strip</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span> 
+  <span class="n">url</span> <span class="o">=</span> <span class="s">"https://truepriceenergy.com/get_data"</span>
+  <span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s">"start"</span><span class="p">:</span> <span class="n">start_date</span><span class="p">,</span>
         <span class="s">"end"</span><span class="p">:</span> <span class="n">end_date</span><span class="p">,</span>
         <span class="s">"operating_day"</span><span class="p">:</span> <span class="n">operating_day</span><span class="p">,</span>
@@ -412,19 +471,19 @@ You must replace <code>email & password </code> with your own credentials.
         <span class="s">"strip"</span><span class="p">:</span> <span class="n">strip</span><span class="p">,</span>
         <span class="s">"history"</span><span class="p">:</span> <span class="n">history</span><span class="p">,</span>
         <span class="s">"type"</span><span class="p">:</span> <span class="nb">type</span>
-    <span class="p">}</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s">"Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s">"</span><span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s">"Bearer </span><span class="si">{</span><span class="n">access_token</span><span class="si">}</span><span class="s">"</span><span class="p">}</span>
 
-    <span class="c1"># Make the API request
-</span>    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">querystring</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+  <span class="c1"># Make the API request
+</span>  <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">querystring</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
-    <span class="c1"># Save the response content as a CSV file
-</span>    <span class="n">file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">curve</span><span class="si">}</span><span class="s">_</span><span class="si">{</span><span class="n">iso</span><span class="si">}</span><span class="s">.csv"</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
-        <span class="nb">file</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
+  <span class="c1"># Save the response content as a CSV file
+</span>  <span class="n">file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'TruePrice_API/</span><span class="si">{</span><span class="n">response</span><span class="p">.</span><span class="n">headers</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"Content-Disposition"</span><span class="p">,</span> <span class="s">""</span><span class="p">).</span><span class="n">split</span><span class="p">(</span><span class="s">"filename="</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s">'</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+      <span class="nb">file</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Data saved to </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">response</span>
+  <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Data saved to </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">response</span>
 
 
 <span class="c1"># Example:
@@ -433,6 +492,47 @@ You must replace <code>email & password </code> with your own credentials.
 <span class="c1">#Response
 </span><span class="n">data_response</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">your_access_token</span><span class="p">,</span> <span class="n">your_start_date</span><span class="p">,</span> <span class="n">your_end_date</span><span class="p">,</span> <span class="n">your_operating_day</span><span class="p">,</span> <span class="n">your_curve</span><span class="p">,</span> <span class="n">your_iso</span><span class="p">,</span> <span class="n">your_strip</span><span class="p">,</span> <span class="n">your_idcob</span><span class="p">,</span> <span class="n">your_type</span><span class="p">)</span>
 
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-k</span> <span class="nt">-G</span> <span class="s2">"https://truepriceenergy.com/get_data"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer YOUR_ACCESS_TOKEN"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"start=YYYY-MM-DD"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"end=YYYY-MM-DD"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"operating_day=YYYY-MM-DD"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"curve_type=CurveName"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"iso=ISOName"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"strip=StripType"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"history=IDC_OB_Value"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"type=TypeName"</span> <span class="se">\</span>
+  <span class="nt">--output</span> CurveName_ISOName.csv
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span>
+  <span class="na">start</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">end</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">operating_day</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YYYY-MM-DD</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">curve_type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CurveName</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">iso</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ISOName</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">strip</span><span class="p">:</span> <span class="dl">"</span><span class="s2">StripType</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">history</span><span class="p">:</span> <span class="dl">"</span><span class="s2">IDC_OB_Value</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">TypeName</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="s2">`https://truepriceenergy.com/get_data?</span><span class="p">${</span><span class="nx">params</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Bearer YOUR_ACCESS_TOKEN</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Network response was not ok</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">blob</span><span class="p">();</span>  <span class="c1">// If the content is a file</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">blob</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">fileName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">CurveName_ISOName.csv</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">download</span> <span class="o">=</span> <span class="nx">fileName</span><span class="p">;</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Data saved to </span><span class="p">${</span><span class="nx">fileName</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Fetch error:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
 </code></pre></div><h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://truepriceenergy.com/get_data</code></p>
 <h5 id='request-parameters'><strong>Request Parameters</strong></h5>
@@ -466,7 +566,13 @@ You must replace <code>email & password </code> with your own credentials.
 <td><code>operating_day</code></td>
 <td>string</td>
 <td>No</td>
-<td>The operating day for the data retrieval in <code>YYYY-MM-DD</code> format.</td>
+<td>The starting operating day in <code>YYYY-MM-DD</code> format.</td>
+</tr>
+<tr>
+<td><code>operating_day_end</code></td>
+<td>string</td>
+<td>No</td>
+<td>The ending operating day in <code>YYYY-MM-DD</code> format.</td>
 </tr>
 <tr>
 <td><code>offset</code></td>
@@ -478,13 +584,13 @@ You must replace <code>email & password </code> with your own credentials.
 <td><code>curve</code></td>
 <td>string</td>
 <td>Yes</td>
-<td>The type of curve (e.g., <code>energy</code>, <code>nonenergy</code>, <code>rec</code>).</td>
+<td>The type of curve (e.g., <code>energy</code>, <code>nonenergy</code>, <code>rec</code>, or <code>all</code>).</td>
 </tr>
 <tr>
 <td><code>iso</code></td>
 <td>string</td>
 <td>Yes</td>
-<td>The ISO region (e.g., <code>isone</code>, <code>pjm</code>, <code>ercot</code>, <code>nyiso</code>, <code>miso</code>).</td>
+<td>The ISO region (e.g., <code>isone</code>, <code>pjm</code>, <code>ercot</code>, <code>nyiso</code>, <code>miso</code>, or <code>all</code>).</td>
 </tr>
 <tr>
 <td><code>strip</code></td>
@@ -493,16 +599,16 @@ You must replace <code>email & password </code> with your own credentials.
 <td>The strip type (e.g., <code>standardized</code>, <code>unstandardized</code>).</td>
 </tr>
 <tr>
-<td><code>history</code></td>
-<td>boolean</td>
+<td><code>idcob</code></td>
+<td>string</td>
 <td>No</td>
-<td>Whether to include historical data (<code>True</code> or <code>False</code>).</td>
+<td>Identifier for intraday/cob filters or reporting granularity (e.g., <code>cobonly</code>, <code>latestonly</code>, <code>intradayonly</code>, <code>all</code>)</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>string</td>
 <td>Yes</td>
-<td>The response format (e.g., <code>csv</code>,<code>xlsx</code>).</td>
+<td>The response format (e.g., <code>csv</code>, <code>xlsx</code>).</td>
 </tr>
 </tbody></table>
 
@@ -517,42 +623,127 @@ You must replace <code>email & password </code> with your own credentials.
 <td><code>Bearer &lt;access_token&gt;</code></td>
 </tr>
 </tbody></table>
-<h2 id='working-with-multiple-data-types-amp-handling-specific-scenarios'>Working with Multiple Data Types &amp; Handling Specific Scenarios</h2><div class="highlight"><pre class="highlight python tab-python"><code>
+<h2 id='working-with-multiple-data-types-amp-handling-specific-scenarios'>Working with Multiple Data Types &amp; Handling Specific Scenarios</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'openssl'</span>
+
+<span class="k">def</span> <span class="nf">fetch_energy_data</span><span class="p">(</span><span class="n">iso</span><span class="p">,</span> <span class="n">strip</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://truepriceenergy.com/get_data"</span><span class="p">)</span>
+  <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">start: </span><span class="s2">"2000-01-01"</span><span class="p">,</span>
+    <span class="ss">end: </span><span class="s2">"9999-12-31"</span><span class="p">,</span>
+    <span class="ss">curve_type: </span><span class="s2">"energy"</span><span class="p">,</span>
+    <span class="ss">iso: </span><span class="n">iso</span><span class="p">,</span>
+    <span class="ss">strip: </span><span class="n">strip</span><span class="p">,</span>
+    <span class="ss">history: </span><span class="n">history</span><span class="p">,</span>
+    <span class="ss">type: </span><span class="s2">"csv"</span>
+  <span class="p">}</span>
+  <span class="n">uri</span><span class="p">.</span><span class="nf">query</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">encode_www_form</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+  <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+  <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="n">http</span><span class="p">.</span><span class="nf">verify_mode</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">SSL</span><span class="o">::</span><span class="no">VERIFY_NONE</span>
+
+  <span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+  <span class="n">request</span><span class="p">[</span><span class="s2">"Authorization"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Bearer YOUR_ACCESS_TOKEN"</span>
+
+  <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+  <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="n">file</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span> <span class="p">}</span>
+  <span class="nb">puts</span> <span class="s2">"Saved </span><span class="si">#{</span><span class="n">filename</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+
+<span class="c1"># Example usage:</span>
+<span class="n">fetch_energy_data</span><span class="p">(</span><span class="s2">"pjm"</span><span class="p">,</span> <span class="s2">"standardized"</span><span class="p">,</span> <span class="s2">"False"</span><span class="p">,</span> <span class="s2">"energy_pjm_standardized.csv"</span><span class="p">)</span>
+<span class="n">fetch_energy_data</span><span class="p">(</span><span class="s2">"pjm"</span><span class="p">,</span> <span class="s2">"unstandardized"</span><span class="p">,</span> <span class="s2">"False"</span><span class="p">,</span> <span class="s2">"energy_pjm_unstandardized.csv"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code>
 <span class="sb">`ERCOT`</span>
 <span class="c1">#Formatted Standardized Data
-</span><span class="n">energy_ercocot_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"ercot"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+</span><span class="n">energy_ercocot_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"ercot"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="s">"all"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
 <span class="c1"># Unformated Unstandardized Data
 </span><span class="n">energy_ercocot_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"ercot"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="s">"intradayonly"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
 <span class="sb">`ISO-NE`</span>
 <span class="c1">#Formatted Standardized Data
-</span><span class="n">energy_isone_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"isone"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+</span><span class="n">energy_isone_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"isone"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="s">"all"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
 <span class="c1"># Unformated Unstandardized Data
 </span><span class="n">energy_isone_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"isone"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="s">"intradayonly"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
 <span class="sb">`NYISO`</span>
 <span class="c1">#Formatted Standardized Data
-</span><span class="n">energy_nyiso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"nyiso"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+</span><span class="n">energy_nyiso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"nyiso"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="s">"all"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
 <span class="c1"># Unformated Unstandardized Data
 </span><span class="n">energy_nyiso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"nyiso"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="s">"intradayonly"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
 <span class="sb">`MISO`</span>
 <span class="c1">#Formatted Standardized Data
-</span><span class="n">energy_miso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"miso"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+</span><span class="n">energy_miso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"miso"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="s">"all"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
 <span class="c1"># Unformated Unstandardized Data
 </span><span class="n">energy_miso_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"miso"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="s">"intradayonly"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
 <span class="sb">`PJM`</span>
 <span class="c1">#Formatted Standardized Data
-</span><span class="n">energy_pjm_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"pjm"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+</span><span class="n">energy_pjm_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"pjm"</span><span class="p">,</span><span class="s">"standardized"</span><span class="p">,</span> <span class="s">"all"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
 <span class="c1"># Unformated Unstandardized Data
-</span><span class="n">energy_pjm_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"pjm"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
+</span><span class="n">energy_pjm_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span> <span class="s">"2000-01-01"</span><span class="p">,</span> <span class="s">"9999-12-31"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"energy"</span><span class="p">,</span> <span class="s">"pjm"</span><span class="p">,</span><span class="s">'unstandardized'</span><span class="p">,</span> <span class="s">"all"</span><span class="p">,</span> <span class="s">"csv"</span><span class="p">)</span>
 
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Standardized Data</span>
+curl <span class="nt">-k</span> <span class="nt">-G</span> <span class="s2">"https://truepriceenergy.com/get_data"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer YOUR_ACCESS_TOKEN"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"start=2000-01-01"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"end=9999-12-31"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"curve_type=energy"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"iso=ISO_NAME"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"strip=standardized"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"history=False"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"type=csv"</span> <span class="se">\</span>
+  <span class="nt">--output</span> energy_ISO_NAME_standardized.csv
+
+<span class="c"># Unstandardized Data</span>
+curl <span class="nt">-k</span> <span class="nt">-G</span> <span class="s2">"https://truepriceenergy.com/get_data"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer YOUR_ACCESS_TOKEN"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"start=2000-01-01"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"end=9999-12-31"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"curve_type=energy"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"iso=ISO_NAME"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"strip=unstandardized"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"history=intradayonly"</span> <span class="se">\</span>
+  <span class="nt">--data-urlencode</span> <span class="s2">"type=csv"</span> <span class="se">\</span>
+  <span class="nt">--output</span> energy_ISO_NAME_unstandardized.csv
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">fetchEnergyData</span><span class="p">(</span><span class="nx">iso</span><span class="p">,</span> <span class="nx">strip</span><span class="p">,</span> <span class="nx">history</span><span class="p">,</span> <span class="nx">fileName</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span>
+    <span class="na">start</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2000-01-01</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">end</span><span class="p">:</span> <span class="dl">"</span><span class="s2">9999-12-31</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">curve_type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">energy</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">iso</span><span class="p">:</span> <span class="nx">iso</span><span class="p">,</span>
+    <span class="na">strip</span><span class="p">:</span> <span class="nx">strip</span><span class="p">,</span>
+    <span class="na">history</span><span class="p">:</span> <span class="nx">history</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">csv</span><span class="dl">"</span>
+  <span class="p">});</span>
+
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`https://truepriceenergy.com/get_data?</span><span class="p">${</span><span class="nx">params</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Bearer YOUR_ACCESS_TOKEN</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="kd">const</span> <span class="nx">blob</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">blob</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">link</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+  <span class="nx">link</span><span class="p">.</span><span class="nx">download</span> <span class="o">=</span> <span class="nx">fileName</span><span class="p">;</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
+  <span class="nx">link</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Example Usage</span>
+<span class="nx">fetchEnergyData</span><span class="p">(</span><span class="dl">"</span><span class="s2">pjm</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">standardized</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">False</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">energy_pjm_standardized.csv</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">fetchEnergyData</span><span class="p">(</span><span class="dl">"</span><span class="s2">pjm</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">unstandardized</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">False</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">energy_pjm_unstandardized.csv</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div>
 <p>This endpoint retrieves curves based on Data Types, ISO&#39;s.</p>
 
@@ -631,7 +822,10 @@ You must replace <code>email & password </code> with your own credentials.
       </div>
       <div class="dark-box">
           <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
